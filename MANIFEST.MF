@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: spreadsheet-copy-fourjs.jar com/fourjs/spreadsheet/
+Created-By: Michael Folcher
