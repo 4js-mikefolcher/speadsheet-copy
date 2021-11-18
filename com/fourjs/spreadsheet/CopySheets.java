@@ -26,13 +26,15 @@ import org.apache.poi.ss.util.PaneInformation;
 public class CopySheets {
 
    public Workbook mergeExcelFiles(Workbook book, InputStream[] inList) throws IOException {
+       int count = 0;
 
        for (InputStream fin : inList) {
            Workbook b = WorkbookFactory.create(fin);
+           count++;
            for (int i = 0; i < b.getNumberOfSheets(); i++) {
-               // not entering sheet name, because of duplicated names
                Sheet s = b.getSheetAt(i);
-               copySheets(book.createSheet(s.getSheetName()),s);
+               String sheetName = s.getSheetName() + "_" + String.valueOf(count);
+               copySheets(book.createSheet(sheetName),s);
            }
        }
        return book;
