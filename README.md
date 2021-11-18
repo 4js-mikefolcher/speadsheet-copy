@@ -13,9 +13,10 @@ You can download the latest version here: https://poi.apache.org/download.html
 - Run the jar-build.sh command to build the jar file
 - Reference the spreadsheet-copy-fourjs.jar file in your CLASSPATH
 
-### Generate JWT Token 
+### Merge Two or More Excel Files
 
-The following code can be used to generate JWT token in Java
+The following code can be used merge two or more Excel files. Each sheet will be a\
+distinct sheet in the new Excel file created.
 
 **Java Implementation**
 ```java
