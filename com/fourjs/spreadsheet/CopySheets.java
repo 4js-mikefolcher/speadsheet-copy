@@ -27,13 +27,21 @@ public class CopySheets {
 
    public Workbook mergeExcelFiles(Workbook book, InputStream[] inList) throws IOException {
        int count = 0;
+       Map<String, Integer> sheets = new HashMap<String, Integer>(); 
 
        for (InputStream fin : inList) {
            Workbook b = WorkbookFactory.create(fin);
            count++;
            for (int i = 0; i < b.getNumberOfSheets(); i++) {
                Sheet s = b.getSheetAt(i);
-               String sheetName = s.getSheetName() + "_" + String.valueOf(count);
+               String sheetName = s.getSheetName();
+               int sheetCnt = 1;
+               if (sheets.containsKey(sheetName)) {
+                  sheetCnt = sheets.get(sheetName);
+                  sheetName += "_" + String.valueOf(sheetCnt);
+                  sheetCnt++;
+               }
+               sheets.put(sheetName, 1);
                copySheets(book.createSheet(sheetName),s);
            }
        }
